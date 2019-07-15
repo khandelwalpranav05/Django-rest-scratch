@@ -1,9 +1,11 @@
 #Generic Views for API
 
+from django.db.models import Q
 from rest_framework import generics,mixins
 
 from postings.models import BlogPost
 from .serializers import BlogPostSerializer
+from .permissions import IsOwnerOrReadOnly
 
 class BlogPostAPIView(mixins.CreateModelMixin,generics.ListAPIView):
 	lookup_field = 'pk'
@@ -31,6 +33,7 @@ class BlogPostAPIView(mixins.CreateModelMixin,generics.ListAPIView):
 class BlogPostRudView(generics.RetrieveUpdateDestroyAPIView):
 	lookup_field = 'pk'
 	serializer_class = BlogPostSerializer
+	permission_classes = [IsOwnerOrReadOnly]
 
 	def get_queryset(self):
 		return BlogPost.objects.all()
