@@ -38,3 +38,4 @@ class BlogPostRudView(generics.RetrieveUpdateDestroyAPIView):
 	def get_queryset(self):
 		return BlogPost.objects.all()
 
+

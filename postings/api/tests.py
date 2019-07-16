@@ -1,4 +1,4 @@
-from rest_framework import APITestCase
+from rest_framework.test import APITestCase
 from django.contrib.auth import get_user_model
 
 from postings.models import BlogPost
