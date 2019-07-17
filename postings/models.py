@@ -13,6 +13,3 @@ class BlogPost(models.Model):
 
 	def __str__(self):
 		return str(self.user.username)
-
-	def get_api_url(self):
-		return api_reverse("api-postings:post-rud",kwargs = {'pk':self.pk})
